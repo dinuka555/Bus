@@ -45,5 +45,6 @@ ENV ALLOW_EMPTY_PASSWORD="no" \
 EXPOSE 8080 8443
 
 USER 1001
-ENTRYPOINT [ "/opt/bitnami/scripts/wordpress/entrypoint.sh" ]
+# ENTRYPOINT [ "/opt/bitnami/scripts/wordpress/entrypoint.sh" ]
+ENTRYPOINT ["sh","/opt/bitnami/scripts/wordpress/entrypoint.sh" ]
 CMD [ "/opt/bitnami/scripts/nginx-php-fpm/run.sh" ]
