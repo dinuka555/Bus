@@ -26,6 +26,11 @@ COPY rootfs /
 
 RUN chmod g+x /opt/bitnami/scripts/mysql-client/postunpack.sh
 RUN chmod g+x /opt/bitnami/scripts/nginx/postunpack.sh
+RUN chmod g+x /opt/bitnami/scripts/php/postunpack.sh
+RUN chmod g+x /opt/bitnami/scripts/nginx-php-fpm/postunpack.sh
+RUN chmod g+x /opt/bitnami/scripts/wordpress/postunpack.sh
+
+
 
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 RUN /opt/bitnami/scripts/nginx/postunpack.sh
