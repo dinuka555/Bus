@@ -24,7 +24,7 @@ RUN ls -ld /opt/bitnami
 
 COPY rootfs /
 
-RUN chmod g+x /opt/bitnami/scripts
+RUN chmod g+x /opt/bitnami/scripts/mysql-client/postunpack.sh
 
 RUN /opt/bitnami/scripts/mysql-client/postunpack.sh
 RUN /opt/bitnami/scripts/nginx/postunpack.sh
