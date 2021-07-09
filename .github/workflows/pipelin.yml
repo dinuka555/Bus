@@ -73,46 +73,9 @@ jobs:
           --zone ${{ secrets.GCP_REGION }} \
           --project ${{ secrets.GCP_PROJECT_ID }}
         kubectl get services -o wide
-        #kubectl create deployment satellites2  --replicas=2 --image="gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.APPLICATION_NAME }}:latest" 
+        kubectl create deployment satellites2  --replicas=2 --image="gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.APPLICATION_NAME }}:latest" 
         
-        cat <<EOF | kubectl apply -f -
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: satellite-python-service
-        spec:
-          selector:
-            app: satellite
-          ports:
-          - protocol: "TCP"
-            port: 90
-            targetPort: 8080
-          type: LoadBalancer
-          
-        ---
-        
-        apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: satellite
-        spec:
-          selector:
-            matchLabels:
-              app: satellite
-          replicas: 1
-          template:
-            metadata:
-              labels:
-                app: satellite
-            spec:
-              containers:
-              - name: satellite
-                image: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.APPLICATION_NAME }}:latest
-                imagePullPolicy: Always
-                ports:
-                - containerPort: 8080
-        EOF
 
-
+ 
 
 
