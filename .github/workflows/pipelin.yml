@@ -86,7 +86,7 @@ jobs:
           ports:
           - protocol: "TCP"
             port: 90
-            targetPort: 5000
+            targetPort: 8080
           type: LoadBalancer
           
         ---
@@ -99,7 +99,7 @@ jobs:
           selector:
             matchLabels:
               app: satellite
-          replicas: 2
+          replicas: 1
           template:
             metadata:
               labels:
@@ -107,10 +107,10 @@ jobs:
             spec:
               containers:
               - name: satellite
-                image: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.APPLICATION_NAME }}
+                image: gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.APPLICATION_NAME }}:latest
                 imagePullPolicy: Always
                 ports:
-                - containerPort: 5000
+                - containerPort: 8080
         EOF
 
 
