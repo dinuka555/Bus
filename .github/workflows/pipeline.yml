@@ -75,7 +75,7 @@ jobs:
         kubectl get services -o wide
         #kubectl create deployment busapp  --replicas=2 --image="gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ env.APPLICATION_NAME }}:latest" 
         curl -sSL https://raw.githubusercontent.com/bitnami/bitnami-docker-wordpress/master/docker-compose.yml > docker-compose.yml
-        kubectl apply -f docker-compose.yml
+        kubectl apply -f docker-compose up
         
 
  
